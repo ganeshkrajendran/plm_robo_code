@@ -5,7 +5,6 @@ from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch, run_task, multitask
 
 hub = PrimeHub()
-hub = PrimeHub()
 left_motor = Motor(Port.D, Direction.COUNTERCLOCKWISE)
 right_motor = Motor(Port.C)
 attachment_motor = Motor(Port.A, gears=[12, 20])
@@ -13,12 +12,8 @@ attachment_motor2 = Motor(Port.E, gears=[12, 20])
 drive_base =  DriveBase(left_motor,right_motor,wheel_diameter=56, axle_track=142)
 drive_base.use_gyro(True)
 
-
-drive_base.settings(straight_speed= 950, straight_acceleration=950)
+drive_base.settings(straight_speed= 700, straight_acceleration=700)
 drive_base.settings(turn_rate= 350, turn_acceleration=350)
-# alignment tuning
-drive_base.straight(-10)
-drive_base.reset()
 # actual code for mission 11
 drive_base.straight(735)
 drive_base.settings(straight_acceleration=900)
@@ -60,7 +55,7 @@ async def reset_arm():
 
 async def drive_mission():
     # These movements use the WHEELS (no conflict yet)
-    await drive_base.straight(125)
+    await drive_base.straight(105)
     await drive_base.turn(16)
     
     # --- CRITICAL CHECK ---
@@ -78,7 +73,7 @@ async def drive_mission():
     await drive_base.turn(30)
     await drive_base.straight(-25)
     await attachment_motor2.run_angle(4000, 200)
-    await drive_base.turn(-90)
+    await drive_base.turn(-80)
     await drive_base.straight(750)
     
     
